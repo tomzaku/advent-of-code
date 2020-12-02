@@ -1,3 +1,6 @@
+# Repl Online
+https://repl.it/@tomzaku/advent-of-code
+
 # Haskell
 
 To get the output
