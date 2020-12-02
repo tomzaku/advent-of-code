@@ -1,8 +1,8 @@
 const { getInput } = require('../helper/input')
-const getFormattedData = (data) => data.reduce((acc, year) => ({ ...acc, [year]: year }), {})
+const getHashData = (data) => data.reduce((acc, year) => ({ ...acc, [year]: year }), {})
 
 const get2ProductYear = (data, targetYear = 2020) => {
-  const formattedData = getFormattedData(data)
+  const formattedData = getHashData(data)
   for (let year of data) {
     if (formattedData[targetYear - year]) {
       return (targetYear - year) * year
@@ -11,10 +11,16 @@ const get2ProductYear = (data, targetYear = 2020) => {
   return false
 }
 
-
-
 const get3ProductFromYear = (data, targetYear = 2020) => {
-  const formattedData = getFormattedData(data)
+  const formattedData = getHashData(data)
+  for (let firstYear of data) {
+    for (let secondYear of data) {
+      if (formattedData[targetYear - firstYear - secondYear]) {
+        return firstYear * secondYear * (targetYear - firstYear - secondYear)
+      }
+    }
+  }
+  return false
 }
 
 const main = async () => {
