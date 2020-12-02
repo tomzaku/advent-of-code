@@ -13,8 +13,10 @@ const get2ProductYear = (data, targetYear = 2020) => {
 
 const get3ProductFromYear = (data, targetYear = 2020) => {
   const formattedData = getHashData(data)
-  for (let firstYear of data) {
-    for (let secondYear of data) {
+  for (let firstIndex = 0; firstIndex < data.length - 1; firstIndex++) {
+    for (let secondIndex = firstIndex + 1; secondIndex < data.length; secondIndex++) {
+      const firstYear = data[firstIndex]
+      const secondYear = data[secondIndex]
       if (formattedData[targetYear - firstYear - secondYear]) {
         return firstYear * secondYear * (targetYear - firstYear - secondYear)
       }
