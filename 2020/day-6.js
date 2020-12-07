@@ -39,7 +39,7 @@ const solve2 = (data) => {
 
 const main = async () => {
   const data = await getInput()
-  // console.log(solve1(data))
+  console.log(solve1(data))
   console.log(solve2(data))
 }
 
