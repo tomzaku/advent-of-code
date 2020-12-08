@@ -83,5 +83,4 @@ const main = async () => {
   console.log(solve2(data))
 }
 
-
 main().then(() => { })
