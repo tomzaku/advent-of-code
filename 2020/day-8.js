@@ -26,8 +26,8 @@ const solve2 = (data, traceList = [], index = 0) => {
   for (let index = 0; index < data.length; index++) {
     const [operation, argument] = data[index]
     if (operation == 'nop' || operation == 'jmp') {
-      const changeOperation = operation == 'nop' ? 'jmp' : 'nop'
-      const nextData = [...data.slice(0, index), [changeOperation, argument], ...data.slice(index + 1)]
+      const changedOperation = operation == 'nop' ? 'jmp' : 'nop'
+      const nextData = [...data.slice(0, index), [changedOperation, argument], ...data.slice(index + 1)]
       const result = getAccumulator(nextData)
       if (result[0] === data.length) {
         return result[1]
