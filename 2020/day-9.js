@@ -1,6 +1,5 @@
 const { getInput } = require('../helper/input')
 
-
 const getFormattedData = (data, preambleNumber) => ({
   preamble: data.slice(0, preambleNumber).reduce((acc, number) => ({ ...acc, [number]: true }), {}),
   checkedList: data.slice(preambleNumber)
@@ -28,7 +27,6 @@ const solve1 = data => findInvalidNumber(data.checkedList, data.preamble)
 
 const sum = (data) => data.reduce((acc, item) => acc + item, 0)
 
-
 // Big O (N * N)
 const solve2 = (data, targetedNumber) => {
   for (let i = 0; i < data.length - 1; i++) {
@@ -40,7 +38,6 @@ const solve2 = (data, targetedNumber) => {
     }
   }
 }
-
 
 // Big O(N) only for positive number
 const solvePositive2 = (data, targetNumber) => {
