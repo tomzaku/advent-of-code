@@ -5,7 +5,6 @@ const solve1 = (startMins, availableBus) => {
   const buses = availableBus.map(i => ({ id: i, mins: i * Math.ceil(startMins / i) }))
   const targetedBus = buses.reduce((acc, bus) => acc.mins > bus.mins ? bus : acc, { mins: Infinity })
   return targetedBus.id * (targetedBus.mins - startMins)
-  // console.log(buses, targetedBus)
 }
 
 const main = async () => {
@@ -13,7 +12,6 @@ const main = async () => {
   const startMins = parseInt(data[0])
   const availableBus = data[1].split(',').filter((i) => !isNaN(i)).map(i => parseInt(i))
   console.log(solve1(startMins, availableBus))
-  // console.log(solve2(data))
 }
 
 main().then(() => { })

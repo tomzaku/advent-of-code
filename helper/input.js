@@ -25,9 +25,47 @@ const zip3 = (arr1, arr2, arr3) => arr1.map((_, index) => [arr1[index], arr2[ind
 
 const sort = arr => arr.sort(function (a, b) { return a - b });
 
+const makeGroup = (data) => (ifMatch, isIncluding = false, isIgnoreFirstItem = false) => {
+  const result = []
+  let temp = []
+  data.forEach((item) => {
+    if (ifMatch(item)) {
+      result.push(temp)
+      temp = []
+    } else {
+      temp.push(item)
+    }
+    if (isIncluding) {
+      temp.push(item)
+    }
+  })
+  if (temp.length != 0) result.push(temp)
+  if (isIgnoreFirstItem) return result.slice(1)
+  return result
+}
+
+const sum = (x = []) => x.length == 0 ? 0 : x[0] + sum(x.slice(1))
+
+const transpose = m => m[0].map((x, i) => m.map(x => x[i]))
+
+const all = (x = []) => filterFn => x.filter(filterFn).length == x.length
+
+const omit = (arr, removedLists) => arr.filter(i => !removedLists.includes(i))
+
+const merge = (arr, addedLists) => [... new Set(...arr, ...addedLists)]
+
+const findAllIndex = (x = []) => findFn => x.map((item, index) => [item, index]).filter(([item, index]) => findFn(item)).map(([item, index]) => index)
+
 module.exports = {
   getInput,
   zip,
   zip3,
-  sort
+  sort,
+  makeGroup,
+  sum,
+  transpose,
+  all,
+  omit,
+  merge,
+  findAllIndex
 }
